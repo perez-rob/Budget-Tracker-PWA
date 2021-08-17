@@ -28,7 +28,7 @@ const checkDatabase = () => {
             // DO WE NEED A SECOND TRANSACTION HERE??
             transaction = db.transaction(["TempStore"], "readwrite");
             const clearStore = transaction.objectStore("TempStore");
-            clearStore.clearStore();
+            clearStore.clear();
           }
         });
     }
