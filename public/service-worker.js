@@ -20,9 +20,6 @@ const FILES_TO_CACHE = [
 // install
 self.addEventListener("install", function (evt) {
   evt.waitUntil(
-    caches.open(DATA_CACHE_NAME).then((cache) => cache.add("/api/images"))
-  );
-  evt.waitUntil(
     caches.open(CACHE_NAME).then((cache) => cache.addAll(FILES_TO_CACHE))
   );
 
