@@ -1,5 +1,5 @@
-const CACHE_NAME = "static-cache-v2";
-const DATA_CACHE_NAME = "data-cache-v1";
+const STATIC_CACHE = "static-cache-v1";
+const RUNTIME_CACHE = "runtime-cache";
 const FILES_TO_CACHE = [
   "/",
   "/style.css",
@@ -18,12 +18,13 @@ const FILES_TO_CACHE = [
 ];
 
 // install
-self.addEventListener("install", function (evt) {
-  evt.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(FILES_TO_CACHE))
+self.addEventListener("install", (event) => {
+  event.waitUntil(
+    caches
+      .open(STATIC_CACHE)
+      .then((cache) => cache.addAll(FILES_TO_CACHE))
+      .then(() => self.skipWaiting())
   );
-
-  self.skipWaiting();
 });
 
 // activate
