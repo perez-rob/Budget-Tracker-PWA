@@ -46,7 +46,7 @@ req.onsuccess = (event) => {
 const saveRecord = (data) => {
   const transaction = db.transaction(["TempStore"], "readwrite");
   const store = transaction.objectStore("TempStore");
-  store.onupgradeneeded(data);
+  store.add(data);
 };
 
 window.addEventListener("online", checkDatabase);
